@@ -46,6 +46,8 @@ DATABASE_URL="postgresql://username:password@localhost:5432/logiclike_db"
 
 Вместо username подставьте свой
 
+Далее выполните команду ниже в той же папке
+
 ```bash
 docker-compose up --build
 ```
