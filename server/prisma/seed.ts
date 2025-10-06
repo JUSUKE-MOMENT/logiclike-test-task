@@ -1,12 +1,16 @@
-import { PrismaClient } from "@prisma/client/extension";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 async function main() {
   console.log("Starting seed...");
 
-  await prisma.vote.deleteMany();
-  await prisma.idea.deleteMany();
+  try {
+    await prisma.vote.deleteMany();
+    await prisma.idea.deleteMany();
+  } catch (e) {
+    console.log("Tables not found, skipping deleteMany");
+  }
 
   const ideas = await prisma.idea.createMany({
     data: [

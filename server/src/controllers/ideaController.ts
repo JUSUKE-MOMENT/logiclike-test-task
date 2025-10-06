@@ -5,7 +5,7 @@ const ideaService = new IdeaService();
 
 export const getIdeas = async (req: Request, res: Response) => {
   try {
-    const ideas = ideaService.getAllIdeas();
+    const ideas = await ideaService.getAllIdeas();
     res.json(ideas);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });

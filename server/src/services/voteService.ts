@@ -27,8 +27,13 @@ export class VoteService {
     }
 
     await this.voteRepository.createVote(ipAddress, ideaId);
-    await this.ideaRepository.incrementVotes(ideaId);
+    const newVoteCount = await this.ideaRepository.incrementVotes(ideaId);
 
-    return { succes: true, newVoteCount: idea.votes_count + 1 };
+    return { success: true, newVoteCount: newVoteCount };
+  }
+
+  async getVotesByIp(ipAddress: string) {
+    const votes = await this.voteRepository.findVotesByIp(ipAddress);
+    return votes.map((vote) => vote.idea_id);
   }
 }

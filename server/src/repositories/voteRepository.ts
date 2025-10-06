@@ -28,4 +28,11 @@ export class VoteRepository {
       },
     });
   }
+
+  async findVotesByIp(ipAddress: string) {
+    return await prisma.vote.findMany({
+      where: { ip_address: ipAddress },
+      select: { idea_id: true },
+    });
+  }
 }
