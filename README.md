@@ -68,7 +68,6 @@ docker-compose up --build
 В папке /client
 
 ```bash
-cd frontend
 npm install
 npm run dev
 ```
