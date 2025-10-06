@@ -1,13 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 
-declare global {
-  namespace Express {
-    interface Request {
-      clientIp?: string;
-    }
-  }
-}
-
 export const getClientIp = (
   req: Request,
   res: Response,

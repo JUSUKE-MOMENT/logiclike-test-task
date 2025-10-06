@@ -16,7 +16,7 @@ export class IdeaRepository {
   }
 
   async incrementVotes(id: number) {
-    return await prisma.idea.update({
+    const updated = await prisma.idea.update({
       where: { id },
       data: {
         votes_count: {
@@ -24,5 +24,6 @@ export class IdeaRepository {
         },
       },
     });
+    return updated.votes_count;
   }
 }
